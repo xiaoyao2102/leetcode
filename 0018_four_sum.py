@@ -6,22 +6,18 @@ class Solution:
             # termination condition
             if right - left + 1 < n or n < 2 or nums[left] * n > reduced_target or nums[right] * n < target:
                 return
-
-            if n == 2:
+            elif n == 2:
                 while left < right:
                     s = nums[left] + nums[right]
 
                     if s == reduced_target:
                         results.append(result + [nums[left], nums[right]])
-                        # while left < right and nums[left] == nums[left + 1]:
-                        #     left += 1
-                        # while left < right and nums[right] == nums[right - 1]:
-                        #     right -= 1
-                        # left += 1
-                        # right -= 1
-                        left += 1
-                        while left < right and nums[left] == nums[left - 1]:
+                        while left < right and nums[left] == nums[left + 1]:
                             left += 1
+                        while left < right and nums[right] == nums[right - 1]:
+                            right -= 1
+                        left += 1
+                        right -= 1
 
                     elif s < reduced_target:
                         left += 1
@@ -36,5 +32,3 @@ class Solution:
         results = []
         n_sum(0, len(nums) - 1, target, 4, [], results)
         return results
-
-print(Solution().fourSum([0,1,5,0,1,5,5,-4], 11))
