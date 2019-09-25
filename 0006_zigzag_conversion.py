@@ -15,5 +15,3 @@ class Solution:
                     ret += s[j + cycle_len - i]
                 j += cycle_len
         return ret
-# PAHNALIGYIR
-print(Solution().convert("PAYPALISHIRING", 4))
