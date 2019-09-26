@@ -20,4 +20,3 @@ class Solution:
                 else:
                     break
         return result
-

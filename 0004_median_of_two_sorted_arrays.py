@@ -35,4 +35,3 @@ class Solution:
                     min_of_right = min(nums1[i], nums2[j])
 
                 return (max_of_left + min_of_right) / 2.0
-

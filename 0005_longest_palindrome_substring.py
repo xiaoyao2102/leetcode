@@ -11,6 +11,3 @@ class Solution:
         for i in range(len(s)):
             res = max(palindrome(s, i, i), palindrome(s, i, i + 1), res, key=len)
         return res
-
-
-print(Solution().longestPalindrome("babad"))

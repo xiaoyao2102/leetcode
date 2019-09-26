@@ -9,4 +9,3 @@ def two_sum(nums, target):
             return [buff_dict[nums[i]], i]
         else:
             buff_dict[target - nums[i]] = i
-
