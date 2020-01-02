@@ -37,19 +37,3 @@ class MyStack:
     def _rotate(self):
         for _ in range(len(self.queue) - 1):
             self.queue.append(self.queue.pop(0))
-
-
-# Your MyStack object will be instantiated and called as such:
-obj = MyStack()
-obj.push(1)
-obj.push(2)
-obj.push(4)
-obj.push(6)
-param_3 = obj.top()
-param_2 = obj.pop()
-print(obj.pop())
-print(obj.pop())
-param_4 = obj.empty()
-print(param_2)
-print(param_3)
-print(param_4)
