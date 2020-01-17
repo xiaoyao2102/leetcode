@@ -1,8 +1,9 @@
 from copy import deepcopy
 
+
 class Solution:
 
-    def totalNQueens(self, n: int) -> List[List[str]]:
+    def totalNQueens(self, n: int) -> int:
         res = []
         temp_board = [['.' for j in range(n)] for i in range(n)]
         self.__backtrack(res, temp_board, 0, n)
