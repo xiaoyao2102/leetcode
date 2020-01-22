@@ -6,13 +6,13 @@ class Solution:
         self.backtracking(result, [], nums)
         return result
 
-    def backtracking(self, result: List[List[int]], temp: List[int], nums: List[int]):
-        if len(temp) == len(nums):
-            result.append(temp.copy())
+    def backtracking(self, result: List[List[int]], used_num: List[int], nums: List[int]):
+        if len(used_num) == len(nums):
+            result.append(used_num.copy())
         else:
             for num in nums:
-                if num in temp:
+                if num in used_num:
                     continue
-                temp.append(num)
-                self.backtracking(result, temp, nums)
-                temp.pop()
+                used_num.append(num)
+                self.backtracking(result, used_num, nums)
+                used_num.pop()

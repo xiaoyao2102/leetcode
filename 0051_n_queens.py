@@ -6,7 +6,7 @@ class Solution:
 
     def solveNQueens(self, n: int) -> List[List[str]]:
         res = []
-        temp_board = [['.' for j in range(n)] for i in range(n)]
+        temp_board = [['.' for _ in range(n)] for _ in range(n)]
         self.__backtrack(res, temp_board, 0, n)
         return list(map(lambda board: list(map(lambda x: ''.join(x), board)), res))
 
