@@ -1,62 +1,46 @@
-from copy import deepcopy
-
-
 class Solution:
 
     def totalNQueens(self, n: int) -> int:
-        res = []
-        temp_board = [['.' for j in range(n)] for i in range(n)]
-        self.__backtrack(res, temp_board, 0, n)
+        if n < 1:
+            return 0
 
-        return len(res)
+        self.count = 0
 
-    def __backtrack(self, res, temp_board, row, n):
-        if row == n:
-            res.append(deepcopy(temp_board))
+        self._dfs(0, 0, 0, 0, n)
+
+        return self.count
+
+    # col left_below and right_below are integers that represent the position whether is
+    # attacked by other queens.
+    # e.g. left below = 5 = 0101 means that the first and third position is available
+    def _dfs(self, row_number: int, col: int, left_below: int, right_below: int, n: int):
+        if row_number >= n:
+            self.count += 1
             return
 
-        for col in range(n):
-            if self.__is_valid(temp_board, row, col, n):
-                temp_board[row][col] = 'Q'
-                self.__backtrack(res, temp_board, row + 1, n)
-                temp_board[row][col] = '.'
+        # get available bit
+        # col | left_below | right_below can find which bit is 0 for current position
+        # ~ change the 0 to 1 for easier to get.
+        # (1 << n) - 1 is a bit mask that contains n 1.
+        # e.g. 00...0011...11   num of 1 = n
+        bit = (~ (col | left_below | right_below)) & ((1 << n) - 1)
 
-    def __is_valid(self, temp_board, row, col, n):
-        if self.__check_column(temp_board, row, col):
-            return False
+        while bit > 0:
+            # get last bit of 1
+            p = bit & -bit
 
-        if self.__check_upper_45(temp_board, row, col):
-            return False
+            # enter next row recursion
+            # col | p. put p in col
+            # (left_down | p) << 1.
+            # put p in left_down. because in the next row, the p will attack the left
+            # down position, thus we need to move p 1 position to the left.
+            # so as right_down
 
-        if self.__check_upper_135(temp_board, row, col, n):
-            return False
+            self._dfs(row_number + 1, col | p, (left_below | p) << 1, (right_below | p) >> 1, n)
 
-        return True
+            # remove last bit of 1
+            bit = bit & (bit - 1)
 
-    def __check_column(self, temp_board, row, col):
-        i = 0
-        while i != row:
-            if temp_board[i][col] == 'Q':
-                return True
-            i += 1
-        return False
 
-    def __check_upper_45(self, temp_board, row, col):
-        i, j = row - 1, col - 1
-
-        while i >= 0 and j >= 0:
-            if temp_board[i][j] == 'Q':
-                return True
-            i -= 1
-            j -= 1
-        return False
-
-    def __check_upper_135(self, temp_board, row, col, n):
-        i, j = row - 1, col + 1
-
-        while i >= 0 and j < n:
-            if temp_board[i][j] == 'Q':
-                return True
-            i -= 1
-            j += 1
-        return False
+solution = Solution()
+assert solution.totalNQueens(4) == 2
