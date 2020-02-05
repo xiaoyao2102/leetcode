@@ -37,7 +37,9 @@ class Solution:
 
 solution = Solution()
 
-assert len(solution.generateTrees(3)) == 5
-assert len(solution.generateTrees(2)) == 2
 assert len(solution.generateTrees(1)) == 1
-assert len(solution.generateTrees(4)) == 14
+assert len(solution.generateTrees(2)) == 2
+assert len(solution.generateTrees(3)) == 2 * 2 + 1 * 1
+assert len(solution.generateTrees(4)) == 5 * 2 + 2 * 2
+assert len(solution.generateTrees(5)) == 14 * 2 + 5 * 2 + 1 * 2 * 2
+assert len(solution.generateTrees(6)) == 42 * 2 + 14 * 2 + 2 * 5 * 2
