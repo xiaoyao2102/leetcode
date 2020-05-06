@@ -18,4 +18,4 @@ class Solution:
 solution = Solution()
 
 assert solution.maxProfit([1, 2, 3, 0, 2]) == 3
-# assert solution.maxProfit([1, 2, 4]) == 3
+assert solution.maxProfit([1, 2, 4]) == 3

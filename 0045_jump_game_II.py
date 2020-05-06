@@ -1,24 +1,13 @@
+from typing import List
+
+
 class Solution:
-    def isMatch(self, s: str, p: str) -> bool:
-        str_pointer, pattern_pointer = 0, 0
-        asterisk_pattern_start = -1
-        match = 0
-        while str_pointer < len(s):
+    def jump(self, nums: List[int]) -> int:
+        current_end, current_farthest, jump = 0, 0, 0
 
-            if pattern_pointer < len(p) and (p[pattern_pointer] == '?' or p[pattern_pointer] == s[str_pointer]):
-                str_pointer += 1
-                pattern_pointer += 1
-            elif pattern_pointer < len(p) and p[pattern_pointer] == '*':
-                asterisk_pattern_start = pattern_pointer
-                match = str_pointer
-                pattern_pointer += 1
-            elif asterisk_pattern_start != -1:
-                pattern_pointer = asterisk_pattern_start + 1
-                match += 1
-                str_pointer = match
-            else:
-                return False
-
-        while pattern_pointer < len(p) and p[pattern_pointer] == '*':
-            pattern_pointer += 1
-        return pattern_pointer == len(p)
+        for i in range(len(nums) - 1):
+            current_farthest = max(current_farthest, i + nums[i])
+            if i == current_end:
+                jump += 1
+                current_end = current_farthest
+        return jump

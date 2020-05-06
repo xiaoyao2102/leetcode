@@ -3,7 +3,7 @@ class Solution:
     def generateParenthesis(self, n: int) -> list:
         ans = []
 
-        def back_tracking(p: str, left: int, right:int):
+        def back_tracking(p: str, left: int, right: int):
             if len(p) == 2 * n:
                 ans.append(p)
                 return

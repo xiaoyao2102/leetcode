@@ -37,10 +37,10 @@ class Solution:
                 last = get_bit(n - 1)
 
                 return list(map(lambda x: '0' + x, last)) + list(map(lambda x: '1' + x, last[::-1]))
-        print(get_bit(n))
+
         return list(map(lambda x: int(x, 2), get_bit(n)))
 
 
 solution = Solution()
 
-assert solution.grayCode(2) == [0, 1, 3, 2, 6, 7, 5, 4]
+assert solution.grayCode(3) == [0, 1, 3, 2, 6, 7, 5, 4]

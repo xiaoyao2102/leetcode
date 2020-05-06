@@ -17,3 +17,10 @@ class Solution(object):
             used[c] = i
 
         return max_length
+
+
+solution = Solution()
+
+assert solution.lengthOfLongestSubstring('abcabcbb') == 3
+assert solution.lengthOfLongestSubstring('pwwkew') == 3
+assert solution.lengthOfLongestSubstring('bbb') == 1

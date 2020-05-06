@@ -9,6 +9,7 @@ class Solution:
         res = ''
 
         k -= 1
+        zip
 
         while n > 0:
             n -= 1

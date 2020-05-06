@@ -10,7 +10,7 @@ class Solution:
 
             if left == right:
                 max_length = max(max_length, 2 * right)
-            elif right >= left:
+            elif right > left:
                 left, right = 0, 0
 
         left, right = 0, 0
@@ -23,7 +23,7 @@ class Solution:
 
             if left == right:
                 max_length = max(max_length, 2 * left)
-            elif left >= right:
+            elif left > right:
                 left, right = 0, 0
 
         return max_length

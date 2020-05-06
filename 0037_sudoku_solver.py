@@ -37,7 +37,7 @@ class Solution:
             if board[row][i] != '.' and board[row][i] == num:
                 return False
             if board[3 * (row // 3) + i // 3][3 * (col // 3) + i % 3] != '.' and board[3 * (row // 3) + i // 3][
-                3 * (col // 3) + i % 3] == num:
+                    3 * (col // 3) + i % 3] == num:
                 return False
         return True
 
